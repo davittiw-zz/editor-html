@@ -46,28 +46,32 @@ let davittiw_editor = {
             name:'Break-line',
             attribute:false
         }
-    }, 
+    },
     loadEditor(){
-
-        this.editor.forEach((tagHTML,index_tag)=>{
         
+        this.editor.forEach((tagHTML,index_tag)=>{
+            
             for(let button in davittiw_editor.buttons){
-
-                    let new_element = document.createElement('button');
-                    new_element.innerText = davittiw_editor.buttons[button].name;
-                    tagHTML.appendChild(new_element);   
+                
+                let new_element = document.createElement('button');
+                new_element.innerText = davittiw_editor.buttons[button].name;
+                tagHTML.appendChild(new_element);
+                
+                new_element.onclick = (e)=>{
                     
-                    new_element.onclick = (e)=>{
+                    let tag = document.createElement(button);
+                    tag.style.border = "1px solid #CCC";
+                    tag.setAttribute('contenteditable',true);
+                    tagHTML.appendChild(tag);
 
-                        let tag = document.createElement(button);
-                        tag.style.border = "1px solid #CCC";
-                        tag.setAttribute('contenteditable',true);
-                        tagHTML.appendChild(tag);
-                    }
+                }
+
+
             }
             //let button = document.createElement('');
 
         });
+
 
     },
     init(){
